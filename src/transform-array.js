@@ -14,73 +14,77 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
  function transform( arr ) {
-  let error = `'arr' parameter must be an instance of the Array!'`
-   if(Array.isArray(arr)){
-
  
-  
-for (let i = 0; i < arr.length; i++) {
-  if(arr[i]=='--discard-next'&&arr[i+2]=='--double-prev'){
-    arr.splice(i,3)
-    return arr
-  }
-  if(arr[i]=='--double-next'&&arr[i+2]=='--double-prev'){
-    // arr.splice(i,1,arr[i+1],arr[i+1])
-    arr.splice(i+2,1)
-   arr.splice(i,1,arr[i+1],arr[i+1])
-    return arr
-  }
-    if(arr[i]=='--discard-next'&&arr[i+2]=='--discard-prev'){
-    arr.splice(i,3)
-    return arr
-  }
-    if(arr[i]=='--double-next'&&arr[i+2]=='--discard-prev'){
-    arr.splice(i,1)
-      arr.splice(i+1,1)
-    return arr
-  }
+  try {
 
+    if(Array.isArray(arr)){
 
-if(arr[i]=='--discard-next'){
-       if(i==arr.length-1){
-        arr.splice(i, 1)
-           return arr
-         }
-   arr.splice(i, 2);
-   }  else
-     if(arr[i]=='--discard-prev'){
-         if(i==0){
-          arr.splice(i, 1)
+      for (let i = 0; i < arr.length; i++) {
+        if(arr[i]=='--discard-next'&&arr[i+2]=='--double-prev'){
+          arr.splice(i,3)
           return arr
-         }
-    arr.splice(i-1, 2);
-  }else
-
-  if(arr[i]=='--double-next'){
-    if(i==arr.length-1){
-      arr.splice(i, 1)
-      return arr
-         }
-         arr.splice(i, 1,arr[i+1]);
-  }else
-    if(arr[i]=='--double-prev'){
-      if(i==0){
-        arr.splice(i, 1)
-        return arr
-         }
-         arr.splice(i, 1,arr[i-1]);
+        }
+        if(arr[i]=='--double-next'&&arr[i+2]=='--double-prev'){
+         
+          arr.splice(i+2,1)
+         arr.splice(i,1,arr[i+1],arr[i+1])
+          return arr
+        }
+          if(arr[i]=='--discard-next'&&arr[i+2]=='--discard-prev'){
+          arr.splice(i,3)
+          return arr
+        }
+          if(arr[i]=='--double-next'&&arr[i+2]=='--discard-prev'){
+          arr.splice(i,1)
+            arr.splice(i+1,1)
+          return arr
+        }
+      
+      
+      if(arr[i]=='--discard-next'){
+             if(i==arr.length-1){
+              arr.splice(i, 1)
+                 return arr
+               }
+         arr.splice(i, 2);
+         }  else
+           if(arr[i]=='--discard-prev'){
+               if(i==0){
+                arr.splice(i, 1)
+                return arr
+               }
+          arr.splice(i-1, 2);
+        }else
+      
+        if(arr[i]=='--double-next'){
+          if(i==arr.length-1){
+            arr.splice(i, 1)
+            return arr
+               }
+               arr.splice(i, 1,arr[i+1]);
+        }else
+          if(arr[i]=='--double-prev'){
+            if(i==0){
+              arr.splice(i, 1)
+              return arr
+               }
+               arr.splice(i, 1,arr[i-1]);
+        }
+        
+        }
+      
+              return (arr) 
+         }else{
+              throw new Error(`'arr' parameter must be an instance of the Array!'`);
+             }
+  
+  } catch (err) {
+  
+    throw new Error(`'arr' parameter must be an instance of the Array!'`)
+  
   }
-   
   
   
-  
-  
-  }
-
-        return (arr) 
-   }else{
-        throw new Error(error);
-       }
  }
  
 module.exports = {

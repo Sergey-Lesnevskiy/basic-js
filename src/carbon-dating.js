@@ -17,20 +17,32 @@ const HALF_LIFE_PERIOD = 5730;
  * dateSample('WOOT!') => false
  *
  */
-function dateSample( sampleActivity ) {
+
   // throw new NotImplementedError('Not implemented');
   function dateSample( sampleActivity ) {
-    // throw new NotImplementedError('Not implemented');
-    if(members!=null){
-    if( typeof sampleActivity === 'string'){
-    return true
-    }else{
-   return false
-    }
-   
-  }
-  }
-}
+    
+    
+        if( typeof sampleActivity  !='string'){
+        return false
+      
+        }
+        else if(Number(sampleActivity)>0||Number(sampleActivity<15)){
+    
+      return  false
+        }
+       else if(sampleActivity==isNaN(" ")){
+            return  false
+        }
+       else 
+       
+         if(isNaN(sampleActivity)){
+         return false}
+         else{
+            
+          }
+    
+      }
+
 
 module.exports = {
   dateSample
