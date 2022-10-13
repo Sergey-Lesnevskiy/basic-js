@@ -16,13 +16,13 @@ const { NotImplementedError } = require('../extensions/index.js');
   
     
     if( date !=undefined){
-   if(date instanceof Date){
+   if(date instanceof Date || false){
   
   if(date.getMonth()<2){
     return 'winter'
   }else if(date.getMonth()<5){
     return 'spring'
-  }else if(date.getMonth()<7){
+  }else if(date.getMonth()<8){
     return 'summer'
   }else if(date.getMonth()<11) {
     return 'autumn'
@@ -34,7 +34,7 @@ const { NotImplementedError } = require('../extensions/index.js');
        throw new Error(error);
       }
   }else{
-    return console.log('Unable to determine the time of year!')
+    return 'Unable to determine the time of year!'
   }
   }
 

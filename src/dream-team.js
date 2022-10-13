@@ -19,7 +19,7 @@ const { NotImplementedError } = require('../extensions/index.js');
   let arr=[]
   for (let i = 0; i < members.length; i++) {
     if( typeof members[i] === 'string'&&members[i]!=='null'){
-        arr.push(members[i].trim().charAt(0))
+        arr.push(members[i].trim().charAt(0).toUpperCase())
     }
   }
 
