@@ -22,7 +22,6 @@ const { NotImplementedError } = require('../extensions/index.js');
         arr.push(members[i].trim().charAt(0).toUpperCase())
     }
   }
-
 arr.sort()
 let str=''
 for (let i = 0; i < arr.length; i++) {
@@ -36,11 +35,9 @@ for (let i = 0; i < str.length; i++) {
     }
   }
 }
-
 if(str.length==0){
 return   false
 }
-
 return str.toUpperCase()
  }
    return false

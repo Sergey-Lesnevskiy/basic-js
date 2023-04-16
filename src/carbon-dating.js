@@ -37,10 +37,9 @@ const HALF_LIFE_PERIOD = 5730;
        
          if(isNaN(sampleActivity)){
          return false}
-         else{
-            
-          }
-    
+        
+       
+         return Math.ceil((Math.log10(MODERN_ACTIVITY / parsedString))/ (0.693 / HALF_LIFE_PERIOD));
       }
 
 
