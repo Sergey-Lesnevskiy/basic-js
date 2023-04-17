@@ -24,9 +24,38 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 function getDNSStats(domains) {
 
+  if (!domains.length) {
+    return {}
+  }
+  let arr = []
 
+
+  for (let i = 0; i < domains.length; i++) {
+    arr.push(domains[i].split('.'))
+  }
+
+    for (let i = 0; i < arr.length; i++) {
+      arr[i].reverse()
+  for (let j = 0; j < arr[i].length; j++) {
+  arr[i][j]=`.${arr[i][j]}`
+    
+  }
+  }
+   for (let i = 0; i < arr.length; i++) {
+
+  for (let j = 0; j < arr[i].length; j++) {
+if(arr[i][j-1]){
+  arr[i][j]=`${arr[i][j-1]}${arr[i][j]}`
+}  
+  }
+  }
+  
+    const temp = arr.flat().reduce((acc,cur)=>{
+    acc[cur] = (acc[cur]||0) + 1
+     return acc
+    },{})
+     return temp
 }
-
 module.exports = {
   getDNSStats
 };
